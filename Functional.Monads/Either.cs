@@ -58,6 +58,23 @@ namespace Felipeslongo.Functional.Monads
                 rightAction(this.right);
             }
         }
+        /// <summary>
+        /// If left value is assigned, execute an action on it.
+        /// </summary>
+        /// <param name="leftAction">Action to execute.</param>
+        public void DoLeft(Action<TL> leftAction)
+        {
+            if (leftAction == null)
+            {
+                throw new ArgumentNullException(nameof(leftAction));
+            }
+
+            if (this.isLeft)
+            {
+                leftAction(this.left);
+            }
+        }
+
 
         /// <summary>
         /// Gets the Left instance or a default value is not set
